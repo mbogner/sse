@@ -1,0 +1,29 @@
+spring:
+  rabbitmq1:
+    host: localhost
+    port: 5673
+    username: rabbit1
+    password: P4ssw0rd!
+    virtual-host: /
+    listener:
+      simple:
+        acknowledge-mode: manual
+        prefetch: 5
+    template:
+      mandatory: true
+    publisher-returns: true
+    publisher-confirm-type: correlated
+  rabbitmq2:
+    host: localhost
+    port: 5674
+    username: rabbit2
+    password: P4ssw0rd!
+    virtual-host: /
+    listener:
+      simple:
+        acknowledge-mode: manual
+        prefetch: 5
+    template:
+      mandatory: true
+    publisher-returns: true
+    publisher-confirm-type: correlated
