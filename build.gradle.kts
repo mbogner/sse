@@ -44,7 +44,10 @@ allprojects {
             cacheChangingModulesFor(0, "seconds")
         }
         dependencies {
-
+            // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core
+            dependency("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
+            // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-reactor
+            dependency("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.6.1")
         }
     }
 
