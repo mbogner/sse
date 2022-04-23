@@ -68,12 +68,22 @@ class SecurityConfig {
             .password(passwordEncoder.encode("password"))
             .roles("ADMIN")
             .build()
-        val user: UserDetails = User
-            .withUsername("user")
+        val user1: UserDetails = User
+            .withUsername("user1")
             .password(passwordEncoder.encode("password"))
             .roles("USER")
             .build()
-        return MapReactiveUserDetailsService(admin, user)
+        val user2: UserDetails = User
+            .withUsername("user2")
+            .password(passwordEncoder.encode("password"))
+            .roles("USER")
+            .build()
+        val user3: UserDetails = User
+            .withUsername("user3")
+            .password(passwordEncoder.encode("password"))
+            .roles("USER")
+            .build()
+        return MapReactiveUserDetailsService(admin, user1, user2, user3)
     }
 
 }
