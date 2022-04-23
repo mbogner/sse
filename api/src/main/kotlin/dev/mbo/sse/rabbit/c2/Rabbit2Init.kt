@@ -28,24 +28,23 @@ import javax.annotation.PostConstruct
 @Configuration
 class Rabbit2Init(
     @Qualifier(Rabbit2ConnectionConfig.QUALIFIER) private val admin: RabbitAdmin,
-    @Qualifier("topicExchange2") private val topicExchange2: TopicExchange,
-    @Qualifier("queue2") private val queue2: Queue
 ) {
     companion object {
-        const val ROUTING_KEY2 = "routing.key.example2.new"
+        const val ROUTING_KEY = "route2"
+        val TOPIC_EXCHANGE = TopicExchange("topic2", true, false)
+        val QUEUE = Queue("queue2", true)
     }
 
     @PostConstruct
     fun init() {
-        admin.declareExchange(topicExchange2)
-        admin.declareQueue(queue2)
+        admin.declareExchange(TOPIC_EXCHANGE)
+        admin.declareQueue(QUEUE)
         admin.declareBinding(
             BindingBuilder
-                .bind(queue2) //Create Queue Directly
-                .to(topicExchange2) //Create switches directly to establish associations
-                .with(ROUTING_KEY2)
+                .bind(QUEUE) //Create Queue Directly
+                .to(TOPIC_EXCHANGE) //Create switches directly to establish associations
+                .with(ROUTING_KEY)
         ) //Specify Routing Key
-
     }
 
 }
